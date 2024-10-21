@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Java App",
+      "type": "shell",
+      "command": "mvn compile exec:java -Dexec.mainClass=kotliarov.dev.App",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$javac"],
+      "detail": "Запуск Maven проекта через команду Maven"
+    }
+  ]
+}
