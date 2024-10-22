@@ -9,15 +9,18 @@ import org.junit.jupiter.api.Test;
 
 import kotliarov.dev.command.task.AddCommand;
 import kotliarov.dev.command.task.CompleteCommand;
+import kotliarov.dev.command.task.DeleteCommand;
 import kotliarov.dev.command.task.RemoveCommand;
 import kotliarov.dev.helpers.CommandHelpers;
+import kotliarov.dev.task.Task;
+import kotliarov.dev.task.TaskManager;
+import kotliarov.dev.task.TaskType;
 
 public class CommandTest {
 
   private static final int TEST_TASKS_COUNT = 5;
   private static final int TEST_TASKS_INDEX = 0;
-
-  String testScannerValue = String.valueOf(TEST_TASKS_INDEX) + "\n";
+  private static final String TEST_SCANNER_VALUE = String.valueOf(TEST_TASKS_INDEX + 1) + "\n";
 
   private TaskManager taskManager;
 
@@ -36,9 +39,9 @@ public class CommandTest {
   @Test
   public void TestCompleteCommand() {
     for (int i = 0; i < TEST_TASKS_COUNT; i++) {
-      taskManager.addTask("Task " + i);
+      taskManager.addTask("Task " + i, TaskType.PERSONAL);
     }
-    CompleteCommand completeCommand = new CompleteCommand(taskManager, new Scanner(testScannerValue));
+    CompleteCommand completeCommand = new CompleteCommand(taskManager, new Scanner(TEST_SCANNER_VALUE));
     completeCommand.execute();
     CommandHelpers.assertTaskCompleted(taskManager, TEST_TASKS_INDEX);
   }
@@ -46,17 +49,27 @@ public class CommandTest {
   @Test
   public void TestRemoveTask() {
     for (int i = 0; i < TEST_TASKS_COUNT; i++) {
-      taskManager.addTask("Task " + i);
+      taskManager.addTask("Task " + i, TaskType.PERSONAL);
+    }
+    RemoveCommand removeCommand = new RemoveCommand(taskManager, new Scanner(TEST_SCANNER_VALUE));
+    removeCommand.execute();
+    CommandHelpers.assertTaskRemoved(taskManager, TEST_TASKS_INDEX);
+  }
+
+  @Test
+  public void TestDeleteTask() {
+    for (int i = 0; i < TEST_TASKS_COUNT; i++) {
+      taskManager.addTask("Task " + i, TaskType.PERSONAL);
     }
 
     String removedTaskDescription = taskManager.getTasks().get(TEST_TASKS_INDEX).getDescription();
 
-    RemoveCommand removeCommand = new RemoveCommand(taskManager, new Scanner(testScannerValue));
-    removeCommand.execute();
+    DeleteCommand DeleteCommand = new DeleteCommand(taskManager, new Scanner(TEST_SCANNER_VALUE));
+    DeleteCommand.execute();
     List<String> taskDescriptionsAfterRemoval = taskManager.getTasks().stream().map(Task::getDescription)
         .collect(Collectors.toList());
 
-    CommandHelpers.assertRemoveTask(taskManager, removedTaskDescription, taskDescriptionsAfterRemoval);
+    CommandHelpers.assertDeleteTask(taskManager, removedTaskDescription, taskDescriptionsAfterRemoval);
   }
 
 }

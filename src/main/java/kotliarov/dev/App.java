@@ -3,6 +3,8 @@ package kotliarov.dev;
 import java.util.Scanner;
 
 import kotliarov.dev.command.CommandProcessor;
+import kotliarov.dev.config.OutCommand;
+import kotliarov.dev.task.TaskManager;
 
 public class App {
     public static void main(String[] args) {

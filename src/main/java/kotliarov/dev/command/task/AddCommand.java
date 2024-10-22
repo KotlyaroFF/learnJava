@@ -2,8 +2,9 @@ package kotliarov.dev.command.task;
 
 import java.util.Scanner;
 
-import kotliarov.dev.TaskManager;
 import kotliarov.dev.command.BaseCommand;
+import kotliarov.dev.task.TaskManager;
+import kotliarov.dev.task.TaskType;
 
 public class AddCommand extends
     BaseCommand {
@@ -16,7 +17,7 @@ public class AddCommand extends
   public void execute() {
     System.out.println("Enter task description: ");
     String description = scanner.nextLine();
-    taskManager.addTask(description);
+    taskManager.addTask(description, TaskType.PERSONAL);
     showSuccess();
   }
 

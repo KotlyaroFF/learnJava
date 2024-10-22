@@ -2,8 +2,8 @@ package kotliarov.dev.command.base;
 
 import java.util.Scanner;
 
-import kotliarov.dev.TaskManager;
 import kotliarov.dev.command.BaseCommand;
+import kotliarov.dev.task.TaskManager;
 
 public class ListCommand extends BaseCommand {
 

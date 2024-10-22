@@ -2,7 +2,7 @@ package kotliarov.dev.command;
 
 import java.util.Scanner;
 
-import kotliarov.dev.TaskManager;
+import kotliarov.dev.task.TaskManager;
 
 public abstract class BaseCommand implements Command {
   protected TaskManager taskManager;

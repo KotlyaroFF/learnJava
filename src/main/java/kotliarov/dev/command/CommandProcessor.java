@@ -4,11 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import kotliarov.dev.TaskManager;
 import kotliarov.dev.command.base.ListCommand;
 import kotliarov.dev.command.task.AddCommand;
 import kotliarov.dev.command.task.CompleteCommand;
+import kotliarov.dev.command.task.DeleteCommand;
 import kotliarov.dev.command.task.RemoveCommand;
+import kotliarov.dev.task.TaskManager;
 
 public class CommandProcessor {
 
@@ -19,6 +20,8 @@ public class CommandProcessor {
     commands.put("list", new ListCommand(taskManager, scanner));
     commands.put("complete", new CompleteCommand(taskManager, scanner));
     commands.put("remove", new RemoveCommand(taskManager, scanner));
+    commands.put("delete", new DeleteCommand(taskManager, scanner));
+
   }
 
   public void process(String commandName) {

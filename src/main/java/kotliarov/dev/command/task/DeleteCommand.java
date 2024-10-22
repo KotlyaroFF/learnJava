@@ -4,24 +4,22 @@ import java.util.Scanner;
 
 import kotliarov.dev.command.BaseCommand;
 import kotliarov.dev.task.TaskManager;
-import kotliarov.dev.task.TaskStatus;
 
-public class CompleteCommand extends BaseCommand {
+public class DeleteCommand extends BaseCommand {
 
-  public CompleteCommand(TaskManager taskManager, Scanner scanner) {
+  public DeleteCommand(TaskManager taskManager, Scanner scanner) {
     super(taskManager, scanner);
   }
 
   @Override
   public void execute() {
-    System.out.println("Enter task number to mark as completed: ");
+    System.out.println("Enter task number to DELETE: ");
     int index = scanner.nextInt();
-    if (taskManager.updateTaskStatus(index - 1, TaskStatus.COMPLETED) != null) {
+    if (taskManager.deleteTask(index - 1)) {
       showSuccess();
     } else {
       System.out.println("Task not found.");
     }
     scanner.nextLine();
   }
-
 }

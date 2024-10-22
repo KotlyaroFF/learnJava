@@ -1,1 +1,14 @@
+kotliarov/dev/task/TaskStatus.class
+kotliarov/dev/command/Command.class
+kotliarov/dev/command/CommandProcessor.class
+kotliarov/dev/command/task/RemoveCommand.class
 kotliarov/dev/App.class
+kotliarov/dev/command/base/ListCommand.class
+kotliarov/dev/command/task/AddCommand.class
+kotliarov/dev/task/TaskType.class
+kotliarov/dev/command/task/DeleteCommand.class
+kotliarov/dev/command/task/CompleteCommand.class
+kotliarov/dev/task/TaskManager.class
+kotliarov/dev/command/BaseCommand.class
+kotliarov/dev/config/OutCommand.class
+kotliarov/dev/task/Task.class
